@@ -1,0 +1,322 @@
+*{
+  margin:0;
+  padding: 0;
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+header{
+  height: 4.8rem;
+  width: 100%;
+  display: flex;
+  justify-items: center;
+  align-content: center;
+  text-align: center;
+}
+ 
+
+
+.logo{
+width: 60px;
+}
+
+
+.Body{
+  flex-grow: 2;
+  background-image: url(https://www.ergo-segurosdeviaje.es/blog/wp-content/uploads/2018/10/billetes-de-avion-baratos-800x324.jpg);
+  background-position: 50%;
+  background-size: cover;
+  z-index: 2;
+  position: relative;
+  color: black;
+ display: flex;
+ justify-content: center;
+flex-direction: column;
+align-items: center; 
+
+}
+
+.ContainerCarousel{
+   display: flex;
+   justify-content: center !important;
+   align-self: center !important;
+   align-items: flex-start;
+   width: 100%;
+   height: 1vh;
+
+}
+
+.footer{
+  background-color: #231942;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-around;
+  justify-items: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 10vh;
+  width: 98%;
+  padding: 1%;
+}
+
+.footerNav{
+  display: flex;
+  justify-content: space-between;
+  gap: .9rem;
+}
+
+#app { height: 100% }
+html,
+
+body {
+  background: #be95c4;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  width: 100%;
+  padding: 0;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  
+
+}
+
+.swiper-slide {
+  transition: transform 0.5s;
+  border-radius: 0.4em;
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /*padding: 10px;*/
+height: calc((90% - 30px) / 2) !important; 
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  border: 2px solid #ff00bf70;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.6), 0 0 9px 3px rgb(255, 255, 255);
+  flex-direction: column;
+  flex-wrap: wrap;
+ 
+ 
+}
+
+  
+ .caja{
+   color:white;
+   font-size: 1em;
+   background-color: #00000054;
+   border-radius: 00.4em;
+   padding: 10px;
+  }
+ .caja:hover{
+  transform: scale(1.2);
+ }
+.cardSw{
+  margin-top: 2.5rem;
+  width: 15%!important;
+  height: 40%!important;
+}
+.swiper-button-next{
+  right: -3px!important;
+}
+
+.swiper-button-prev{
+  left: -3px!important;
+}
+
+.ContainerCarousel {
+    width: 60%;
+    height: 80vh;
+    padding-left: 0%;
+    margin-left: 1rem;
+    /* background-color: cornflowerblue; */
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    
+  }
+  .inputText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1%;
+
+  }
+
+.ContainerCards{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  gap:1rem;
+  
+}
+
+.BodyDetails{
+  display: flex;
+  justify-content: center;
+  min-height: 76vh;
+  
+}
+
+.CardDetails{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 10rem;
+  width: 600px;
+  margin-top: 5%;
+}
+
+.FooterDetails{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5.8rem;
+
+}
+
+a{
+  color: white;
+}
+
+  @media (width < 1280px){
+    .ContainerCarousel {
+      width: 100vw;
+      
+    }
+    
+  } 
+  @media (width < 1300px){
+    .ContainerCarousel {
+      width: 97.6vw;
+      
+
+      }}
+
+@media (width < 768px){
+    .ContainerCarousel {
+      width: 88vw;
+      height: 50vh;
+    }
+    .swiper {
+      width: 100%;
+      height: 100%;
+      
+    
+    }
+    
+  } 
+  
+
+  @media (width < 1280px){
+    .ContainerCarousel {
+      width: 100vw;
+      
+    }
+    
+  } 
+
+  @media (width < 1513px){
+    .ContainerCarousel {
+      width: 97vw;
+      height: 90vh;
+    }
+  }
+
+
+
+  @media (width < 1300px){
+    .ContainerHeader {
+      width: 100%;
+      
+
+      }}
+      
+
+@media (width < 768px){
+    .ContainerHeader {
+      width: 100vw;
+      height: 60vh;
+    }
+    
+  } 
+
+  @media (width < 620px){
+    .ContainerHeader {
+      width: 105vw;
+      height: 60vh;
+    }
+    
+  } 
+
+  @media (width < 320px){
+    .ContainerHeader {
+      width: 100vw;
+      height: 60vh;
+    }
+    
+  } 
+  
+  @media (width < 1513px){
+    footer {
+      width: 97vw;
+      height: 90vh;
+    }
+  }
+  
+ .caja
+{
+    height:1.5rem;
+    width: 10rem;
+    border: 2px solid black;
+    background-color: rgba(117, 16, 117, 0.493);
+} 
+
+
+@media (width < 2100x){
+  .FooterDetails {
+    margin-top:1rem!important;
+    width: 100vw;
+    height: 100vh;
+  }}
+
+  @media (width < 280x){
+    .FooterDetails {
+      display: flex!important;
+      flex-wrap: wrap !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      margin-top: 1rem !important;
+    }}
