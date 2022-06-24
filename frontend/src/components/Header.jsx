@@ -27,7 +27,7 @@ function Body() {
                 textAlign: 'center',
                 alignItems: 'flexStart',
                 fontFamily: 'Abril Fatface',
-                marginTop:'10rem'
+                marginTop:'-15rem'
 
             }}> My Tinerary</Typography>
 
@@ -47,11 +47,13 @@ function Body() {
             </Typography> 
 
              
-            <LinkRouter to ='/Cities'> <Button sx={{
+            <LinkRouter to ='/Cities'> <Button  className="buttonHeader" sx={{
                 fontSize: '25px',
                 width:'100%',
-                color: 'white',
-                backgroundColor:'#fa61c7',
+                height:'3.5rem',
+                color: 'black',
+                background: '#FBCA1F',
+                backgroundSize: '100%',
                 display: 'flex',
                 justifyContent: 'flexStart',
                 marginTop:'1rem',

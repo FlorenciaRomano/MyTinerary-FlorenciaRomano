@@ -1,37 +1,40 @@
 import React from "react";
-import {useParams} from 'react-router-dom';
-import { useState } from "react";
 import NavBar from "../components/NavBar";
-import Header from "../components/Header";
-import Body from "../components/Body";
 import Footer from "../components/Footer";
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
-import { Button, CardActions } from '@mui/material';
 import ScrollToTop from "react-scroll-to-top";
 //import Data from "../data";
 import Card from "../components/CardsCities";
 import NotResults from "../components/NotResults";
-import  useEffect  from "react";
-import axios from 'axios';
+//import axios from 'axios';
+import {useSelector, useDispatch} from "react-redux";
+import { useState, useEffect} from "react";
+import citiesActions from "../Redux/action/citiesAction";
+
+
+
 
 
 function Cities(){
   const [inputValue, setInputValue]=useState("")
+  const dispatch = useDispatch()
    //useEffect(funcion,parametroquevaria) 
-  const [city, setCity]= useState([]) 
-  
-    React.useEffect(()=>{
-    axios.get('http://localhost:4000/api/Cities')
-    .then(res=>{
-      setCity(res.data.response.cities)
-    })
+   useEffect(()=>{
+    dispatch(citiesActions.filterCities(inputValue))
    },[inputValue])
-    console.log(city)
-  let filterImput = city.filter((cities) => cities.city.toLowerCase().startsWith(inputValue.toLowerCase().trim()));
-  console.log(filterImput)
+  //const [city, setCity]= useState([]) 
+  
+const city = useSelector ((store)=> store.citiesReducer.filter);
+
+
+    //React.useEffect(()=>{
+    //axios.get('http://localhost:4000/api/Cities')
+    //.then(res=>{
+      //setCity(res.data.response.cities)
+    //})
+   //},[inputValue])
+    //console.log(city)
+  //let city = cities?.filter((cities) => cities.city.toLowerCase().startsWith(inputValue.toLowerCase().trim()));
+  
   
 
   return(
@@ -47,7 +50,7 @@ function Cities(){
   </div> 
 
   <div className="ContainerCards">
-    {filterImput.length > 0 ? (<Card cardFilter={filterImput}/>) : (<NotResults/>)}
+    {city.length > 0 ? (<Card cardFilter={city}/>) : (<NotResults/>)}  
   </div>
   <Footer/>
   </>

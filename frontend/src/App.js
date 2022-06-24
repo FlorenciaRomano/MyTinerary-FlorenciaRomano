@@ -4,9 +4,17 @@ import Cities from '../src/pages/Cities'
 import Index from './pages/Index';
 import Details from './pages/Details'
 import { Route, Routes } from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import citiesActions from "./Redux/action/citiesAction";
 
 
 function App() {
+
+const Dispatch = useDispatch()
+React.useEffect(()=>{
+  Dispatch(citiesActions.getCities());
+},[])
+
   return (
     <>
      <Routes>

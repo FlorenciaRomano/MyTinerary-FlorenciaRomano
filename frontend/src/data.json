@@ -1,0 +1,151 @@
+{
+  "data": [ 
+
+              {
+                "name": "Visit the Berlin Wall",
+                 "author": "Jenna Collins",
+                 "authorimage": "https://www.cndh.org.mx/sites/default/files/styles/imagen_noticia_480x288/public/imagennoticias/2021-11/Imagen5.jpg?itok=MjPpxuy_",
+                 "description": "Berlín, la capital de Alemania y la ciudad más grande del país, es también un importante centro político, cultural, mediático y científico. Conocido por su estilo cultural, Berlín es el hogar de la mundialmente famosa Ópera de Berlín y la Orquesta Filarmónica de Berlín , mientras que su diversa escena artística abarca cientos de galerías, eventos y museos, incluidos los de la Isla de los Museos , Patrimonio de la Humanidad por la UNESCO..",
+                 "price":3,
+                 "duration":"3 weeks",
+                 "hashtags":"#visitberlin, #WorldOfwar, #BerlinWall,",
+                 "likes":"",
+                 "activities":[""],
+                 "city":"Berlín"
+              },
+              {
+                "name": "visit Playa Tortugas in Cancun",
+                "author": "Arianna Costilla",
+                "authorimage": "https://tipsparatuviaje.com/wp-content/uploads/2019/05/snorkel-playa-tortugas.jpg",
+                "description": "It is a coastal area rich in diversity, with wetlands and mangroves of vital ecological importance. In addition, it is considered one of the most important breeding areas for the Kemp's ridley sea turtle (Lepidochelys kempii), endemic to the Gulf of Mexico and a biological corridor for different species of waterfowl.",
+                "price":"💵💵💵",
+                "duration":"3  weeks",
+                "hashtags":"#visitMexico, #TortugasBeach",
+                "likes":"",
+                "activities":"",
+                "city":"Cancún"
+
+              },
+              {
+                "name": "Visit Miami Beach",
+                "author": "Nacho Perez Alzamendi",
+                "authorimage": "https://q-xx.bstatic.com/xdata/images/hotel/840x460/30828214.jpg?k=3952e0472f76e696f5d97c76c35038d96dccbe0e908aac2a70ce031c9bcf5886&o=",
+                "description": "What does Miami offer? Although the beaches are the main attraction of Miami, it is undoubtedly a place that has much more to offer; you can enjoy a refreshing day in the Everglades National Park, taste a Cuban-style coffee in Little Havana, spend a fun day with the animals of Jungle Island",
+                "price":"💵💵💵💵💵",
+                "duration":"5  weeks",
+                "hashtags":"#visitMiami, #beach",
+                "likes":"",
+                "activities":"",
+                "city":"Miami"
+              },
+              {
+                "name": "Visit Red Fort complex, a symbol to see in Delhi",
+                "author": "Jazmin Romero",
+                "authorimage": "https://megaconstrucciones.net/images/monumentos/foto/fuerte-rojo-delhi.jpg",
+                "description": "Delhi is one of the oldest places in the world with more than 2500 thousand years of history.",
+                "price":"💵💵",
+                "duration":"2  weeks",
+                "hashtags":"#visitDelhi",
+                "likes":"",
+                "activities":"",
+                "city":"New Delhi"
+              },
+              {
+                "name": "Visit wild plum village",
+                "author": "Stefanía Elordi",
+                "authorimage": "https://media.viajando.travel/p/1faa6e6c0f76a166f9dea4045433d31f/adjuntos/236/imagenes/000/043/0000043053/1200x675/smart/bangkok-3.jpg",
+                "description": "Bangkok means village of the wild plum and is the name of a part of the Thon Buri river side. Thus, Bangkok is known as Krung Thep Mahanakhon. It was a small trading post at the mouth of the Chao Phraya River during the Ayutthaya kingdom.",
+                "price":"💵💵💵",
+                "duration":"3  weeks",
+                "hashtags":"#visitBangkok, #WildPlumVillage",
+                "likes":"",
+                "activities":"",
+                "city":"Bangkok"
+              },
+              {
+                "name": "Visit Big Ben and the Palace of Westminster. Big Ben. Palace of Westminster.",
+                "author": "Thiago Bedoya Aguero",
+                "authorimage": "https://res.cloudinary.com/worldpackers/image/upload/c_fill,f_auto,q_auto,w_1024/v1/guides/article_cover/a5pj5ftyivd8xevbub0b",
+                "description": "London is one of the most important tourist destinations in the world. The city is home to a wide variety of tourist attractions. The city attracted 15.3 million international visitors in 2011, making it one of the world's most visited in terms of international visits.",
+                "price":"💵💵💵💵💵",
+                "duration":"5  weeks",
+                "hashtags":"#VisitBigBang, #HarryPotter",
+                "likes":"",
+                "activities":"",
+                "city":"London"
+              },
+              {
+                "name": "Visit ancient stone temples, national parks and bustling street food markets.",
+                "author": "Luca Franchini",
+                "authorimage": "https://www.saporedicina.com/es/wp-content/uploads/2025/02/tour-por-taiwan.jpg",
+                "description": "The island of Taiwan (traditional Chinese: 台灣/臺灣; simplified Chinese: 台湾; pinyin: Táiwān), also known as Formosa (from Portuguese ilha Formosa, Beautiful Island), especially in the past, is an island of about 36,000 km², located off the coast of mainland China.",
+                "price":"💵💵💵💵💵",
+                "duration":"5  weeks",
+                "hashtags":"#visitTaiwán, #TemplesTaiwan",
+                "likes":"",
+                "activities":"",
+                "city":"Taiwán"
+              },
+              {
+                "name": "Visit The Acropolis of Athens and the Parthenon",
+                "author": "Simon Arrechavaleta",
+                "authorimage": "https://www.greekboston.com/wp-content/uploads/2009/03/Acropolis.jpg",
+                "description": "Athens is known as the historical capital of Europe, it was founded in the 5th century BC. and it has an amazing architecture thanks to the conquerors who occupied it. It is the capital of the Greek state since 1834, almost two centuries later it became a modern metropolis full of charms.",
+                "price":"💵💵💵",
+                "duration":"3  weeks",
+                "hashtags":"#VisitAtenas, #TheParthenon",
+                "likes":"",
+                "activities":"",
+                "city":"Atenas"
+              },
+              {
+                "name": "Visit the Volcanic Islands of Hawaii",
+                "author": "Leon Benítes (Lleca)",
+                "authorimage": "https://australianwayeducation.com/wp-content/uploads/2016/07/hawaii.jpg",
+                "description": "Hawaii is a group of volcanic islands in the central Pacific Ocean. The islands lie 2,397 miles (3,857 km) from San Francisco, California, to the east and 5,293 miles (8,516 km) from Manila, in the Philippines, to the west. The capital is Honolulu, located on the island of Oahu.",
+                "price":"💵💵💵💵",
+                "duration":"4  weeks",
+                "hashtags":"#VisitHawaii, #Honolulu",
+                "likes":"",
+                "activities":"",
+                "city":"Hawaii"
+              },
+              {
+                "name": "Visit Sintra in Lisboa",
+                "author": "Juan Morales",
+                "authorimage": "https://media.traveler.es/photos/613763ba70e3cff8b85f8196/master/w_1600%2Cc_limit/190271.jpg",
+                "description": "Lisbon is the capital of Portugal and the center of a multifaceted region that appeals to different tastes and senses. In a city that has received many different cultures from faraway places over time, a rustic atmosphere can still be felt in each historic neighborhood today.",
+                "price":"💵",
+                "duration":"1 week",
+                "hashtags":"#VisitLisboa, #Sintra",
+                "likes":"",
+                "activities":"",
+                "city":"Lisboa"
+              },
+              {
+                "name": "Visit Torre Eiffel",
+                "author": "Melody Paz",
+                "authorimage": "https://s1.1zoom.me/big0/643/339681-zero.jpg",
+                "description": "Paris is the capital of France and its most populous city. Capital of the Ile-de-France region (or Parisian Region), it is the only unicommunal department in the country.",
+                "price":"💵💵",
+                "duration":"3  weeks",
+                "hashtags":"#VisitParis, #TorreEiffel",
+                "likes":"",
+                "activities":"",
+                "city":"París"
+              },
+              {
+                "name": "visit Edinburgh castle",
+                "author": "Mariana Espósito",
+                "authorimage": "https://viajarporescocia.com/contenido/uploads/visita-guiada-entrada-al-castillo-de-edimburgo.jpg",
+                "description": "Physically, Edinburgh is a city of sombre theatricality, with much of this quality deriving from its setting among crags and hills and from its tall buildings and spires of dark stone. Edinburgh has been a military stronghold, the capital of an independent country, and a centre of intellectual activity.",
+                "price":"💵💵💵💵💵",
+                "duration":"5  weeks",
+                "hashtags":"#visitEdinburgh, #EdinburghCastle",
+                "likes":"",
+                "activities":"",
+                "city":"Edinburgh"
+              }
+          ]
+         
+            }

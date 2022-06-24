@@ -2,7 +2,10 @@ import React from "react";
 
 function NotResults (){
     return(
-        <h4>NOT FOUND CARDS</h4>
+        <>
+      
+        <img src="https://vmanagecrm.in/property/img/404-error.jpg" />
+        </>
     )
 }
 

@@ -3,14 +3,14 @@ const Data=
 
     {
       "id":"1",
-      "city":"Berlín",
-      "country":"Alemania",
+      "city":"Alemania",
+      "country":"Berlín",
       "image":"https://tipsparatuviaje.com/wp-content/uploads/2019/10/castillo-de-neuschwanstein.jpg"
     },
     {
       "id":"2",
-      "city":"Cancún",
-      "country":"México",
+      "city":"México",
+      "country":"Cancún",
       "image":"https://cdn.travelpulse.com/images/99999999-9999-9999-9999-999999999999/629285eb-e1b1-8b6e-bc67-15f236b7d794/630x355.png"
     },
     {
@@ -21,13 +21,13 @@ const Data=
     },
     {
       "id":"4",
-      "city":"New Delhi",
+      "city":"India",
       "country":"India",
       "image":"https://3.bp.blogspot.com/-6qTyRoa1bzA/V82rEgwoHYI/AAAAAAAAlAY/TZZVxDskRfwbsVyObk5W10qoExi2jLYggCLcB/s1600/Turismo%2Ben%2Bla%2BIndia%252C%2Bconsejos.jpg"
     },
     {
       "id":"5",
-      "city":"Bangkok",
+      "city":"Tailandia",
       "country":"Tailandia",
       "image":"https://ep01.epimg.net/elpais/imagenes/2022/05/05/paco_nadal/1651766005_940988_1651767388_noticia_normal.jpg"
     },
@@ -39,25 +39,25 @@ const Data=
       },
       {
         "id":"7",
-        "city":"Taiwán",
+        "city":"China",
         "country":"China",
         "image":"https://i0.wp.com/paraisos.online/wp-content/uploads/2021/03/Ciudad-prohibida-6.jpg?resize=863%2C486&ssl=1"
       },
       {
         "id":"8",
-        "city":"Atenas",
-        "country":"Grecia",
+        "city":"Grecia",
+        "country":"Brazil",
         "image":"https://images.squarespace-cdn.com/content/v1/5c1b9b60b10598f4780de648/1591370134326-GS2DDAYPICSQUGCQFT9K/Santo.jpg?format=1000w"
       },
       {
         "id":"9",
         "city":"Hawaii",
-        "country":"United States",
+        "country":"Hawaii",
         "image":"https://noticiasnet1.cdn.net.ar/252/noticiasnet/images/01/15/75/1157574_6389eadeefc3fa5743fcbc4ad4cba816f42fc8f410a1f30b617f57af2be71ff5/lg.webp"
       },
       {
         "id":"10",
-        "city":"Lisboa",
+        "city":"Portugal",
         "country":"Portugal",
         "image":"https://www.preferente.com/wp-content/uploads/2019/11/que-ver-en-oporto-1024x576.jpg"
       },
@@ -69,7 +69,7 @@ const Data=
       },
       {
         "id":"12",
-        "city":"Edimburgo",
+        "city":"Escocia",
         "country":"Escocia",
         "image":"https://www.ebooking.com/es/noticias/wp-content/uploads/2013/07/edimburgo.jpg"
       }

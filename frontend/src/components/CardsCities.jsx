@@ -12,11 +12,16 @@ import { Link  as LinkRouter} from "react-router-dom"
 export default function Cards({cardFilter}) {
   return cardFilter.map((city)=> { //mapeo mi propiedad city// 
       return(
-        <Card sx={{ width: 350 }} key={city._id}>
+        <Card sx={{ width: 350,
+          color: "black",
+          boxShadow: "inset 0 0 10px rgba(255, 255, 255, 0.6), 0 0 9px 3px rgb(0, 0, 0)"}}
+           key={city._id}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="140"
+         
+
           image={city.image} 
           alt={city.city}
         />   

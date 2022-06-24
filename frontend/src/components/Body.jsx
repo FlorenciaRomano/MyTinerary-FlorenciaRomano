@@ -59,8 +59,7 @@ export default function Carousel() {
         }}
         navigation={true}
         modules={[Autoplay, Grid, Pagination, Navigation]}
-        className="mySwiper"
-      >
+        className="mySwiper">
         {Data.map(pais => 
         <SwiperSlide className="cardSw" key={pais.id} style={{
           "backgroundImage":`url(${pais.image})`,
