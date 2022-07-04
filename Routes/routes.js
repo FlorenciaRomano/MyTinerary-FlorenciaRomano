@@ -2,14 +2,18 @@ const Router = require ("express").Router(); // le pido a express que me traiga 
 
 const citiesControllers = require('../controllers/CityControllers');//importo mi controlador
 const itinerariesControllers = require ('../Controllers/itineraryControllers');
+const validator = require('../validator');
+const { signUpUsers, signInUser, verificationMail, verifyToken} = require('../Controllers/SingUpControllers');
+const passport = require('../passport')
 
 const {getCities, getOneCity, addCity, modifyCity,  removeCities,  addMultipleCities} = citiesControllers;
 const { getItinerary, getItinerariesByCity, getOneItinerary, addItinerary,  modifyItinerary, removeItinerary, findTinFromCity} = itinerariesControllers; 
 
-
+//const validator = require('../validator');
+//const { default: SignUp } = require("../frontend/src/components/LoginUp");
 //RUTAS CITIES
 
-Router.route('/cities') //creo el endpoint de la ruta
+Router.route('/cities') //creo el endpoint de la ruta //PEDIDOS HTTP
 .get(getCities)
 .post(addCity)
 
@@ -23,9 +27,10 @@ Router.route("/multiplesCities")
 
 
 //RUTAS ITINERARIES
+//reciben el llamado de la api a traves de la url
 
- Router.route('/itineraries')
- .get( getItinerary)
+ Router.route('/itineraries') //PEDIDOS HTTP
+ .get( getItinerary) 
  .post(addItinerary)
 
  Router.route('/itineraries/:id')
@@ -39,5 +44,17 @@ Router.route("/multiplesCities")
  Router.route("/itinerarybycity/:id")
  .get(getItinerariesByCity) 
 
- 
+ //Routes sign
+
+Router.route('/auth/signUp')
+.post(validator, signUpUsers)
+
+Router.route('/auth/signIn')
+.post(signInUser)
+
+Router.route('/verify/:string')
+.get(verificationMail)
+
+Router.route('/auth/verifyToken')
+.get(passport.authenticate('jwt',{ session: false }),verifyToken)
 module.exports = Router

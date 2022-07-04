@@ -19,27 +19,44 @@ import itineraryActions  from "../Redux/action/itineraryAction";
 
 function Details() {
     const { id } = useParams()
+
+    //declaramos const con un string que es igual al que 
+    //le permiten acceder a los parámetros de la ruta actual
+    //o de lo que yo le indico
+
     
    
 
 
     //const [city, setCity]= useState([])
      
-    const dispatch= useDispatch();
+    const dispatch= useDispatch(); //igualamos constante
 
+ 
+//PONEMOS EL DISPATCH Y EL USE EFFECT ANTES DEL USE SELECTORE
+//PORQUE TENEMOS QUE CARGAR EL ESTADO DE LAS ACTION
 
-    React.useEffect(()=>{
+    React.useEffect(()=>{ //permite ejecutar codigo cada vez que nuestro un componente se renderice
       dispatch(citiesActions.getOneCity(id))
+         //DISPATCH es un metodo que Despacha una o mas acciones al store (reducer) y se guarda 
       //axios.get(`http://localhost:4000/api/Cities/${id}`)
       //.then(res =>{
         //setCity(res.data.response)
      dispatch(itineraryActions.findTinFromCity(id))
+       //DISPATCH es un metodo que Despacha una o mas acciones al store (reducer) y se guarda 
     
       
      },[]);
-    const city = useSelector(store => store.citiesReducer.oneCity)
+    const city = useSelector(store => store.citiesReducer.oneCity)//permite extraer los datos del store
+    //Declaramos consta, determina qué operación definida se invoca.
+    //parametro con una funcion con la Ruta
+    //HOOK QUE INGRESA AL STORE Y DEVUELVE EL ESTADO DE LO QUE LE INDICO HACIA EL FRONT
     const itinerary = useSelector (store => store.itineraryReducer.findTinFromCity)
-  
+    //permite extraer los datos del store
+
+   //Declaramos consta, determina qué operación definida se invoca.
+    //parametro con una funcion con la Ruta
+    //HOOK QUE INGRESA AL STORE Y DEVUELVE EL ESTADO DE LO QUE LE INDICO HACIA EL FRONT
     console.log(itinerary)
 console.log(city)
     return ( 

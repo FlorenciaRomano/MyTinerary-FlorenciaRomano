@@ -14,7 +14,7 @@ const reduxStore = createStore({reducer : mainReducer})
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={reduxStore}>
+  <Provider store={reduxStore}> 
   <BrowserRouter>
     <App />
     <ScrollToTop />

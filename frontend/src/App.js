@@ -6,21 +6,37 @@ import Details from './pages/Details'
 import { Route, Routes } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import citiesActions from "./Redux/action/citiesAction";
+import SignUp from "./pages/SingUp";
+import SingIn from "./pages/SingIn";
+import userActions from './Redux/action/userAction';
+import {useEffect }from 'react'
+
 
 
 function App() {
 
-const Dispatch = useDispatch()
-React.useEffect(()=>{
-  Dispatch(citiesActions.getCities());
+  //ES PARA QUE CARGUE TODAS LAS IUDADES EN LA APP
+const dispatch = useDispatch()
+React.useEffect(()=>{//permite ejecutar codigo cada vez que nuestro un componente se renderice
+  dispatch(citiesActions.getCities());//DISPATCH es un metodo que Despacha una o mas acciones al store
+},[])
+
+useEffect(() => {
+  if(localStorage.getItem('token')!== null) {
+      const token = localStorage.getItem("token")
+      //console.log(token)
+      dispatch(userActions.verifyToken(token))
+  }
 },[])
 
   return (
     <>
      <Routes>
-      <Route path='/Index' element={<Index/>}/>
+      <Route path='/' element={<Index/>}/>
       <Route path="/Cities" element={<Cities/>}/>
-      <Route path= "/Details/:id" element={<Details/>}/> //pero esta impresa la card
+      <Route path= "/Details/:id" element={<Details/>}/> 
+      <Route path="/SingUp" element={<SignUp/>}/>
+      <Route path="/Users" element={<SingIn/>}/>
     </Routes>   
     </>
   );

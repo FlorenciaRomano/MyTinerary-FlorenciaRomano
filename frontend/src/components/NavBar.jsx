@@ -12,15 +12,28 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import logo from '../assets/MyTinerary.png'
-import {Link as LinkRouter} from "react-router-dom";
+import {Link as LinkRouter, useNavigate} from "react-router-dom"; 
+import  { useSelector } from 'react-redux';
+import {useDispatch} from 'react-redux'
+import userActions from '../Redux/action/userAction'
 
 
-const pages = ['Home', 'Cities'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = [
+  { nombre: "Home", to: "/" },
+  { nombre: "Cities", to: "/Cities" },     //nombre del estado  en la constante  entre [] va el valor del estado inicial.
+];
+const settings = [
+  { nombre: "Sign In", to:"/Users" }, 
+  { nombre:"Sign Up", to:"/SingUp" }
+];
 
 const NavBar = () => {
+  const user = useSelector ((store) => store.userReducer.user)
+  console.log(user)
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -36,6 +49,11 @@ const NavBar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  async function signOut() {
+    await dispatch(userActions.signOut(user.user.email))
+      .then(navigate("/",{replace:true}))
+  }
 
   return (
     <AppBar position="static" sx={{
@@ -81,14 +99,20 @@ const NavBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
+             {pages.map((page, index) => (
+                <LinkRouter
+                  key={index}
+                  to={page.to}
+                  onClick={handleCloseNavMenu}
+                >
+                  <MenuItem sx={{'&:hover': {bgcolor: 'rgb(224,224,224)'}}} onClick={handleCloseUserMenu}>
+                    <Typography sx={{padding: '2px', paddingLeft: '6px', paddingRight: '6px', color: 'rgb(2,0,3)'}} onClick={signOut}>Sign Out</Typography>
+                  </MenuItem>
+                </LinkRouter>
               ))}
             </Menu>
           </Box>
-         
+        
           <Typography
             variant="h5"
             noWrap
@@ -109,22 +133,23 @@ const NavBar = () => {
             My Tinerary
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block', fontZise:'20px'}}
-              >
-                {page}
-              </Button>
+          {pages.map((page, index) => (
+              <LinkRouter key={index} to={page.to} onClick={handleCloseNavMenu}>
+                <Button sx={{ my: 2, color: "white", display: "block" }}>
+                  {page.nombre}
+                </Button>
+              </LinkRouter>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              {user?<Avatar alt="imgUser" src={user.user?.avatar} sx={{ width: 40, height: 40 }} />
+              :<Avatar alt="Remy Sharp" src="/broken-image.jpg"/>
+              }
               </IconButton>
+
             </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
@@ -142,11 +167,16 @@ const NavBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
+             {user?(<MenuItem sx={{'&:hover': {bgcolor: 'rgb(224,224,224)'}}} onClick={handleCloseUserMenu}>
+                    <Typography sx={{padding: '2px', paddingLeft: '6px', paddingRight: '6px', color: 'rgb(2,0,3)'}} onClick={signOut}>Sign Out</Typography>
+                  </MenuItem>
+                  )
+             : settings.map((setting, index) => (
+                <LinkRouter key={index} to={setting.to} onClick={handleCloseUserMenu}>
+                  <Button textalign="center">{setting.nombre}</Button>
+                </LinkRouter>
               ))}
+              
             </Menu>
           </Box>
         </Toolbar>

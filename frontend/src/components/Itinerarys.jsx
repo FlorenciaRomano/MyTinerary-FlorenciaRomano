@@ -27,7 +27,8 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function CardItinerario({data}) {
-  const [expanded, setExpanded] = React.useState(false); 
+  const [expanded, setExpanded] = React.useState(false);  //// setExpanded DISPATCH Despacha una o mas acciones al store
+
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -51,6 +52,7 @@ export default function CardItinerario({data}) {
         subheader="September 14, 2016"
       />
       <CardMedia
+        
         component="img"
         height="150"
         image={data.avatar}

@@ -24,7 +24,7 @@ function Body() {
                 color: '#231942',
                 display: 'flex',
                 justifyContent: 'center',
-                textAlign: 'center',
+                textalign: 'center',
                 alignItems: 'flexStart',
                 fontFamily: 'Abril Fatface',
                 marginTop:'-15rem'

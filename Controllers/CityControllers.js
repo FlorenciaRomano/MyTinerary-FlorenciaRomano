@@ -1,7 +1,8 @@
 const City = require('../models/city');
 
 const CityControllers = {
-     getCities: async (req, res) => {//FUNCION ASINCRONA
+     getCities: async (req, res) => {//FUNCION ASINCRONA//requerimos y respuesta viene de models
+        //req es lo que pedimos desde el front, res lo que le responde al front
         let cities 
         let error = null //declaramos un error con valor nulo
         try {cities=await City.find()} //Una funcion try (un pedido) va igualar con un await para buscarme todo el contenio de Cities
@@ -15,7 +16,8 @@ const CityControllers = {
         })
      },
      //BUSCA POR ID CADA CIUDAD
-     getOneCity: async (req,res) =>{//FUNCION ASINCRONA
+     getOneCity: async (req,res) =>{//FUNCION ASINCRONA//requerimos y respuesta viene de models.
+        //req es lo que pedimos desde el front, res lo que le responde al front
         const id = req.params.id //indicamos que busque un ObjectId de la colección el cual se igual al id enviado por parámetro al controlador
         let city //declaro variable
         let error = null //Error con valor nulo
@@ -30,7 +32,7 @@ const CityControllers = {
      })
 },
 
-//CREA LAS CIUDADES
+//CREA LAS CIUDADES   //req es lo que pedimos desde el front, res lo que le responde al front
     addCity: async (req,res) => { //FUNCION ASINCRONA//definimos que este recibirá un req.body el cual estará en una variable llamada Data
         const {city, country, image} = req.body.data //Desestructuro el modelo para usarlo por separado. contendrá un objeto con 3 propiedades
 //que coincide con el modelo declarado.
@@ -49,7 +51,7 @@ const CityControllers = {
 })},
 
 //MODIFICA LOS DATOS (CIUDAD)
-   modifyCity: async(req,res) => {//FUNCION ASINCRONA
+   modifyCity: async(req,res) => {//FUNCION ASINCRONA//req es lo que pedimos desde el front, res lo que le responde al front
     const id= req.params.id //elemento a modificar, id de use params////elemento a identificar cada objeto
     const city=req.body.data //Requiere la estructura de donde va a mosdificar. (body,data)
     let citydb  //Definomos la variable que va a esperar la respuesta a ese modelo
@@ -66,7 +68,7 @@ const CityControllers = {
    })},
 
 //ELIMINA LOS DATOS (CIUDAD)
-   removeCities: async(req,res) =>{//FUNCION ASINCRONA
+   removeCities: async(req,res) =>{//FUNCION ASINCRONA//req es lo que pedimos desde el front, res lo que le responde al front
     const id = req.prams.id //Requiere la estructura de donde va a eliminar.
     let city //Declaramos variable
     let error = null //Declaramos error con valor nulo
@@ -81,13 +83,13 @@ const CityControllers = {
    })},
 
 
-    addMultipleCities: async(req,res) =>{//FUNCION ASINCRONA
+    addMultipleCities: async(req,res) =>{//FUNCION ASINCRONA//req es lo que pedimos desde el front, res lo que le responde al front
         const data = req.body.data //Requiere la estructura de donde va a multiplicar.(body.data)
         let cities //Declaro Variable
         let error = null //Declaro Error con valor nulo
         try {//Try, un pedido donde me va a igualar con un await para buscarme el contenido
             data.map(async(city)=>{
-                await new Cities({ //AWAIT va a buscar
+                await new cities({ //AWAIT va a buscar
                     name: data.name, country:data.country, image:data.image //parametros que vamos a buscar
                 }).save() //Guardar
             })

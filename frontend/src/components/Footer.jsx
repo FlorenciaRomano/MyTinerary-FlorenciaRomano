@@ -12,7 +12,7 @@ function Footer() {
          <a href="#"> <InstagramIcon /></a>
 
          <div className="footerNav">
-            <a href="../Index">Home</a>
+            <a href="../">Home</a>
             <a href="../Cities">Cities</a>
          </div>
 
