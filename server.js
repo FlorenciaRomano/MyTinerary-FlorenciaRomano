@@ -12,8 +12,10 @@ app.use(express.json());// LE PIDO A APP QUE ME PERMITA USAR EXPRESS
 app.use(passport.initialize());
 app.use('/api',Router)// LE PIDO A APP QUE ME PERMITA USAR API Y ROUTERS
 
-const PORT = 4000; //Defino el puerto
+const PORT =  process.env.PORT || 4000; //Defino el puerto
 app.set("port", PORT) //seteo la propiedad de app
+
+
 
 //GET obtener
 //POST enviar //
