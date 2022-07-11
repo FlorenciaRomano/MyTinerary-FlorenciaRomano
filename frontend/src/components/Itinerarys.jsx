@@ -108,7 +108,7 @@ const user = useSelector(store => store.userReducer.user)
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
+            
           </Avatar>
         }
         action={
@@ -144,7 +144,7 @@ const user = useSelector(store => store.userReducer.user)
                                 <FavoriteBorderIcon/>}
                                 <Typography>{data.likes.length} likes</Typography>
                             </IconButton>
-                            :
+                            : 
                             <IconButton onClick={noUser} aria-label="add to favorites">
                                 <FavoriteBorderIcon/>
                                 <Typography>{data.likes.length} likes</Typography>

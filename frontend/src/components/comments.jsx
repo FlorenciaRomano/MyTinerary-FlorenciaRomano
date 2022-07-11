@@ -8,13 +8,14 @@ function Comment({ comentarios, handleReload, itineraryId }) { //no tiene nada q
     const [reload, setReload] = useState(false)
     const [modify, setModify] = useState()
     const dispatch = useDispatch()
+    
     console.log(itineraryId)
     async function newComment(event) {
 
         const commentData = {
             itineraryId: itineraryId,
             comment: input,
-        }
+        } 
         await dispatch(commentsAction.addComment(commentData))
         handleReload()
         setReload(!reload)
@@ -33,12 +34,20 @@ function Comment({ comentarios, handleReload, itineraryId }) { //no tiene nada q
             comment: modify,
         }
      
+
 //  console.log(commentData)
 //  console.log(id)
          await dispatch(commentsAction.modifyComment(id, value)) 
          handleReload()
          setReload(!reload)
     }
+
+    // async function noUser(){
+    //     Swal.fire({
+    //       icon:"error",
+    //       title:"You must be logged in to comment or like an itinerary"
+    //     })
+    //   };
 
     console.log(comentarios)
     return (
@@ -70,7 +79,7 @@ function Comment({ comentarios, handleReload, itineraryId }) { //no tiene nada q
                         </div>
                     </div>
                 </div>
-            )}
+            )} 
             <div>
                 <div id="nuevoComentario" placeholder='Ingresa aqui tu comentario...' onInput={(event) =>
                     setInput(event.currentTarget.textContent)}
