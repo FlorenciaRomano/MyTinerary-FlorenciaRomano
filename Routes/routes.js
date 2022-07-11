@@ -1,13 +1,16 @@
 const Router = require ("express").Router(); // le pido a express que me traiga router para definir las rutas
 
 const citiesControllers = require('../controllers/CityControllers');//importo mi controlador
-const itinerariesControllers = require ('../Controllers/itineraryControllers');
+const itineraryControllers = require ('../Controllers/itineraryControllers');
 const validator = require('../validator');
 const { signUpUsers, signInUser, verificationMail, verifyToken} = require('../Controllers/SingUpControllers');
-const passport = require('../passport')
+const passport = require('../passport');
+//const itineraryControllers = require("../Controllers/itineraryControllers");
 
 const {getCities, getOneCity, addCity, modifyCity,  removeCities,  addMultipleCities} = citiesControllers;
-const { getItinerary, getItinerariesByCity, getOneItinerary, addItinerary,  modifyItinerary, removeItinerary, findTinFromCity} = itinerariesControllers; 
+const { getItinerary, getItinerariesByCity, getOneItinerary, addItinerary,  modifyItinerary, removeItinerary, findTinFromCity, likeDislike} = itineraryControllers; 
+
+
 
 //const validator = require('../validator');
 //const { default: SignUp } = require("../frontend/src/components/LoginUp");
@@ -58,3 +61,18 @@ Router.route('/verify/:string')
 Router.route('/auth/verifyToken')
 .get(passport.authenticate('jwt',{ session: false }),verifyToken)
 module.exports = Router
+
+//LIKES ROUTES
+
+Router.route('/itineraries/likes/:id') 
+.put(passport.authenticate('jwt',{session:false}), likeDislike) 
+
+//COMENTS ROUTES
+const CommentsControllers = require('../Controllers/CommentsControllers')
+const {addComment,modifyComment, deleteComment} = CommentsControllers
+Router.route('/itinerary/comment')
+.post(passport.authenticate('jwt',{ session: false }),addComment)
+
+Router.route('/itinerary/comment/:id')
+.post(passport.authenticate('jwt',{ session: false }),deleteComment)
+.put(passport.authenticate('jwt',{ session: false }),modifyComment)

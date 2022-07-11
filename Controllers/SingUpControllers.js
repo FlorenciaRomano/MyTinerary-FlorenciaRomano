@@ -8,12 +8,21 @@ const usersControllers = {
     signUpUsers : async(req, res) =>{
         console.log(req.body)
         const { fullName, email , password , from, avatar, country } = req.body.userData
-       const uniqueString = crypto.randomBytes(15).toString("hex")
+       const uniqueString = crypto.randomBytes(15).toString("hex")  //uniqueString es un código que se enviará por 
+       //mail para luego cambiar verification
         try{
             const userExist = await User.findOne({ email }); 
-            const verification = false;
+            const verification = false; //Por default: verification=false pero se 
+            //cambia a true si la información del 
+            //registro viene de una red social
+            
             if(userExist){
-                if(userExist.from.indexOf(from) !== -1){
+                if(userExist.from.indexOf(from) !== -1){ //La segunda condición del segundo 
+                 // condicional, tal y como vimos: agrega un 
+                  //from y una password a los arrays 
+                  //correspondientes y se asegura la verification
+                  
+                  
                     res.json({ 
                         success: false,
                         from: from,
@@ -43,7 +52,7 @@ const usersControllers = {
                         avatar: avatar,
                         from: [from]  
                     });
-                    if(from !== "form-signup" ) { 
+                    if(from !== "form-signup" ) { //Se incorpora al controlador de signUp inmediatamente luego de crear el usuario nuevo por registro
                         newUser.verification = true
                         await newUser.save()
                         res.json({
@@ -85,9 +94,9 @@ const usersControllers = {
                   from: "no from",
                   message: "User does not exist, please signup",
                 });
-              } else if (userExist.verification) { //si existe la verificacion del usuario
+              } else if (userExist.verification) { //si existe la verificacion del usuario se logra registrar
                 let passwordMatch = userExist.password.filter((pass) =>
-                    bcryptjs.compareSync(password, pass)
+                    bcryptjs.compareSync(password, pass) //encripamos la contraseña
                   );
                   //filtramos en el array de contraseñas hasheadas si coincide la contraseña
                   if (from === "form-Signup") {
@@ -171,6 +180,11 @@ const usersControllers = {
             }
           },
     
+
+
+
+          //Una vez que el usuario haga click en el enlace que suministramos en el email, el usuario accederá a 
+//         la ruta que definimos para la verificación. Es necesario definir ese controlador y su ruta.
           verificationMail: async (req, res) => {
             const { string } = req.params;
             const user = await User.findOne({ uniqueString: string });

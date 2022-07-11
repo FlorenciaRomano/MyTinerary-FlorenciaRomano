@@ -8,14 +8,22 @@ const itinerarySchema = new mongoose.Schema({ //schema es un constructor
     price:{type:Number, required:true},
     duration:{type:String, required:true},
     hashtag:{type:Array, required:true},
-    likes:{type:String, required:true},
+    likes:{type:Array},
     activities:{type:Array, required:true},
-    city: {type: mongoose.Types.ObjectId,ref: 'cities'}//con esta propiedad relaciono el itinerario con la ciudad//
+  comments:[{
+   
+       userId:{type:mongoose.Types.ObjectId, ref:'users'},
+       comment:{type:String}, 
+       
+     }],
+   city: {type: mongoose.Types.ObjectId,ref: 'cities'}//con esta propiedad relaciono el itinerario con la ciudad//
 //La relación de este nuevo modelo requiere que definamos:
 //type: mediante una propiedad de mongoose ObjectId
 //ref: que “une” nuestro modelo con la colección correspondiente
 //quiero que me muestre la ciudad o los requisitos que yo necesito
 })
+
+
 
 //y si estos campos serán  requeridos o no al momento de ser llamado el modelo por los controladores
 //Si la colección no se encuentra creada en la DB, la misma será creada por el modelo cuando sea llamada por el controlador.

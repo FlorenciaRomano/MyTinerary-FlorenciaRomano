@@ -23,13 +23,33 @@ const itinerariesActions = {
     },   //Y LO GUARDA EN PAYLOAD
 
     //BUSCA ITINERARIO CON ID DE CIUDAD
-    findTinFromCity: (id) => {
+    findTinFromCity: (id) => {  
         return async(dispatch,getState) => {
             const res = await axios.get(`http://localhost:4000/api/itinerary/cities/${id}`)//trae la respesta de mi api
             console.log(res.data.response.tineraries)
-            dispatch ({type: 'FIND_ITINERARIES_FROM_CITY', payload: res.data.response.tineraries})
+            dispatch ({type: 'FIND_ITINERARIES_FROM_CITY', payload: res.data.response.tineraries},{}
+            )
+            return res 
         }//DISPATCH es un metodo que Despacha una o mas acciones al store
-}        //Y LO GUARDA EN PAYLOAD
+},//Y LO GUARDA EN PAYLOAD
+
+
+likeDislike: (id) => {
+    const token = localStorage.getItem('token') 
+    return async () =>{
+        try{
+            let response = await axios.put(`http://localhost:4000/api/itineraries/likes/${id}`, {},
+            {headers: {
+                Authorization: "Bearer " + token
+            }
+        })
+      
+        return response
+    }catch (error){
+        console.log(error)
+    }
 }
 
+}
+} 
 export default itinerariesActions

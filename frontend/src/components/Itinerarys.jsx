@@ -14,7 +14,15 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-
+import itineraryAction from '../Redux/action/itineraryAction';
+import {useParams} from "react-redux"
+import {useDispatch, useSelector} from 'react-redux'
+import {useState} from 'react'
+import Swal from "sweetalert2"; 
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
+import { ClassNames } from '@emotion/react';
+import Comments from './comments'
+ 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -26,13 +34,73 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function CardItinerario({data}) {
+export default function CardItinerario({data, handleReload, setChangeReload}) {
   const [expanded, setExpanded] = React.useState(false);  //// setExpanded DISPATCH Despacha una o mas acciones al store
+ console.log(data)
+  // const itineraryDetails=(props) =>{
+  //   const {id} = useParams() 
+  //   const [itinerary, setItinerary] = useState()
+  //   const [inputText, setInputText] = useState()
+  //   const [modify, setModify]  = useState()
+  //   const [reload, setReload] = useState(false)
+  // }
+const dispatch = useDispatch()
+ const [reload, setReload] = React.useState(false)
 
+const user = useSelector(store => store.userReducer.user) 
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
+ 
+  const handleExpandClick = () => { 
+    setExpanded(!expanded); 
   };
+ 
+  React.useEffect(()=>{
+    dispatch(itineraryAction.findTinFromCity(data.city._id));
+  }, [reload]); 
+  // async function cargarComentario(event){
+  //   const commentData = {
+  //     itinerary: itinerary._id,
+  //     comment: inputText,
+  //   }
+  //   await props.addComment(commentData)
+  //   .then(response => setItinerary(response.data.response.nuevoComment), setInputText(''))
+  // document.querySelector("#NewComment").textContent=""
+  // }
+
+  // async function modificarComentario(event){
+  //   const commentData ={
+  //     commentID: event.target.id,
+  //     comment: modify
+  //   }
+  //   console.log(modify)
+  //   await props.modificarComentario(commentData)
+  //   setReload(!reload)
+  // };
+
+  // async function eliminarComentario(event){
+  //   await props.deleteComment(event.target.id)
+  //   setReload(!reaload)
+  // }
+
+  async function likesOrDislikes(){
+    const res = await dispatch(itineraryAction.likeDislike(data._id))
+    console.log(res)
+    setReload(res)
+    setChangeReload()
+  }
+
+  async function noUser(){
+    Swal.fire({
+      icon:"error",
+      title:"You must be logged in to comment or like an itinerary"
+    })
+  };
+  
+  //  useEffect(()=>{
+  //    props.getOneItinerary(id)
+  //    .then(response => setItinerary(response.data.response.itinerary)) 
+  // }, [reload])
+
  console.log(data)
   return (
     <Card sx={{ width: 345 ,
@@ -64,11 +132,27 @@ export default function CardItinerario({data}) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
+
+        
+      
+        
+        {user ?
+                            <IconButton onClick={likesOrDislikes} aria-label="add to favorites">
+                            {data?.likes.includes(user.id) ?
+                                <FavoriteIcon style={{color:'red'}}/>
+                                :
+                                <FavoriteBorderIcon/>}
+                                <Typography>{data.likes.length} likes</Typography>
+                            </IconButton>
+                            :
+                            <IconButton onClick={noUser} aria-label="add to favorites">
+                                <FavoriteBorderIcon/>
+                                <Typography>{data.likes.length} likes</Typography>
+                            </IconButton>
+                        }
+                        
         <IconButton aria-label="share">
-          <ShareIcon />
+            <ShareIcon />
         </IconButton>
         <ExpandMore
           expand={expanded}
@@ -82,15 +166,18 @@ export default function CardItinerario({data}) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>{data.duration}</Typography>
-          <Typography paragraph>
-           {data.description}
-          </Typography>
-          <Typography paragraph>
+          <Typography paragraph> $
            {data.price}
           </Typography>
           <Typography paragraph>
            {data.hashtag}
+
           </Typography>
+          <div className='contenedorComentarios'>
+          <Comments comentarios={data.comments}
+          handleReload={handleReload} 
+          itineraryId={data._id} />
+</div>
         </CardContent>
       </Collapse>
     </Card>

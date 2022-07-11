@@ -22,10 +22,10 @@ React.useEffect(()=>{//permite ejecutar codigo cada vez que nuestro un component
 },[])
 
 useEffect(() => {
-  if(localStorage.getItem('token')!== null) {
-      const token = localStorage.getItem("token")
+  if(localStorage.getItem('token')!== null) { //Solo verifica si hay un token
+      const token = localStorage.getItem("token") //Lo guarda con el localstorage
       //console.log(token)
-      dispatch(userActions.verifyToken(token))
+      dispatch(userActions.verifyToken(token)) //Mandamos al verify token (action) con el dispatch
   }
 },[])
 

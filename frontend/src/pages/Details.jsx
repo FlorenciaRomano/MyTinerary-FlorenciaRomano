@@ -24,17 +24,23 @@ function Details() {
     //le permiten acceder a los parámetros de la ruta actual
     //o de lo que yo le indico
 
-    
-   
+    const [reload, setReload] = React.useState(false)
+   const [itinerary, setItinerary] = React.useState([])
 
 
     //const [city, setCity]= useState([])
      
     const dispatch= useDispatch(); //igualamos constante
-
+    
  
 //PONEMOS EL DISPATCH Y EL USE EFFECT ANTES DEL USE SELECTORE
 //PORQUE TENEMOS QUE CARGAR EL ESTADO DE LAS ACTION
+
+ let handleReload = ()=>{setReload(!reload)}
+
+ function reloadChanger(){
+  setReload(!reload)
+ }
 
     React.useEffect(()=>{ //permite ejecutar codigo cada vez que nuestro un componente se renderice
       dispatch(citiesActions.getOneCity(id))
@@ -43,15 +49,16 @@ function Details() {
       //.then(res =>{
         //setCity(res.data.response)
      dispatch(itineraryActions.findTinFromCity(id))
+     .then(res=>setItinerary(res.data.response.tineraries)) 
        //DISPATCH es un metodo que Despacha una o mas acciones al store (reducer) y se guarda 
     
       
-     },[]);
+     },[id,reload]);
     const city = useSelector(store => store.citiesReducer.oneCity)//permite extraer los datos del store
     //Declaramos consta, determina qué operación definida se invoca.
     //parametro con una funcion con la Ruta
     //HOOK QUE INGRESA AL STORE Y DEVUELVE EL ESTADO DE LO QUE LE INDICO HACIA EL FRONT
-    const itinerary = useSelector (store => store.itineraryReducer.findTinFromCity)
+    //const itinerary = useSelector (store => store.itineraryReducer.findTinFromCity)
     //permite extraer los datos del store
 
    //Declaramos consta, determina qué operación definida se invoca.
@@ -59,6 +66,9 @@ function Details() {
     //HOOK QUE INGRESA AL STORE Y DEVUELVE EL ESTADO DE LO QUE LE INDICO HACIA EL FRONT
     console.log(itinerary)
 console.log(city)
+
+
+
     return ( 
         <>
          <div className="NavDetails">
@@ -66,7 +76,7 @@ console.log(city)
         </div>
       
 
-        <body className="BodyDetails">
+        <div className="BodyDetails">
         {/* <div className="CardDetails">
         <Card key="index" sx={{ width: 450,
          color: "black",
@@ -111,15 +121,16 @@ console.log(city)
 
       <div className="CardItinerario">
       {itinerary.length > 0 ? itinerary.map((data)=>
-        <CardItinerario data = {data}/>
+        <CardItinerario data = {data} handleReload={handleReload} 
+        setChangeReload={reloadChanger} />
       ): <>
       
       <img src="https://vmanagecrm.in/property/img/404-error.jpg" />
       </>}
      
+        </div> 
         </div>
         </div>
-        </body>
          
 
 

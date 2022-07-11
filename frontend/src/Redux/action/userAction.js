@@ -91,6 +91,7 @@ const userActions = {
         return async (dispatch, getState) => {
             //console.log(token)
             await axios.get("http://localhost:4000/api/auth/verifyToken", {headers: {'Authorization': 'Bearer '+token}} )
+            //bearer es un metodo de autorizacion donde le pasamos el token
             .then(user =>{if
                 (user.data.success) {
                     dispatch({
