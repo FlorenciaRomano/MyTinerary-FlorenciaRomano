@@ -6,6 +6,7 @@ const commentControllers={//defino un objeto con los controladores del modelo. E
             const user = req.user._id
             try{
                 const newComment = await Itineraries
+                //un pedido donde me va a igualar con un await para buscarme el contenido
                 .findOneAndUpdate({_id: itineraryId }, {$push : {comments:{comment : comment, userId :user}}},
                     {new:true})
                 .populate("comments.userId", {fullName : 1, avatar : 1})
@@ -32,6 +33,7 @@ const commentControllers={//defino un objeto con los controladores del modelo. E
             //const user = req.user._id 
             console.log("CONSOLECOMENTARICONTROLLERS",comment);
             try {
+                //un pedido donde me va a igualar con un await para buscarme el contenido
                 const modifyComment = await Itineraries.findOneAndUpdate({"comments._id":id},
                  {$set: {"comments.$.comment": comment}}, {new: true}) /* me devuelve el nuevo dato */
                 console.log("looogDeModifyyy",modifyComment)
@@ -46,6 +48,7 @@ const commentControllers={//defino un objeto con los controladores del modelo. E
             const id = req.params.id
             const user = req.user._id
             try {
+                //un pedido donde me va a igualar con un await para buscarme el contenido
                 const deleteComment = await Itineraries.findOneAndUpdate({"comments._id":id}, {$pull: {comments: {_id: id}}}, {new: true}) /* extraigo comment */
             console.log(deleteComment)
                 res.json({ success: true, response:{deleteComment}, message: "You deleted the comment" })

@@ -5,10 +5,18 @@ const itineraryControllers = require ('../Controllers/itineraryControllers');
 const validator = require('../validator');
 const { signUpUsers, signInUser, verificationMail, verifyToken} = require('../Controllers/SingUpControllers');
 const passport = require('../passport');
+const activitiesControllers = require("../Controllers/ActivitiesControllers");
 //const itineraryControllers = require("../Controllers/itineraryControllers");
 
 const {getCities, getOneCity, addCity, modifyCity,  removeCities,  addMultipleCities} = citiesControllers;
 const { getItinerary, getItinerariesByCity, getOneItinerary, addItinerary,  modifyItinerary, removeItinerary, findTinFromCity, likeDislike} = itineraryControllers; 
+const {
+	getActivities,
+	addActivity,
+	modifyActivity,
+	removeActivity,
+	findActivityFromItinerary,
+} = activitiesControllers;
 
 
 
@@ -76,3 +84,10 @@ Router.route('/itinerary/comment')
 Router.route('/itinerary/comment/:id')
 .post(passport.authenticate('jwt',{ session: false }),deleteComment)
 .put(passport.authenticate('jwt',{ session: false }),modifyComment)
+
+//ACTIVITIES ROUTES
+Router.route("/activities").get(getActivities).post(addActivity);
+
+Router.route("/activities/:id").put(modifyActivity).delete(removeActivity);
+
+Router.route("/activities/itineraries/:id").get(findActivityFromItinerary);

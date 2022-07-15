@@ -16,7 +16,13 @@ code {
   flex-direction: column;
   
 }
-
+.navDetails{
+  width: 100%;
+}
+.BotonDetails{
+  display: flex;
+  justify-content: center;
+}
 header{
   height: 4.8rem;
   width: 100%;
@@ -89,11 +95,25 @@ align-items: center;
   justify-items: center;
   align-items: center;
   flex-wrap: wrap;
-  height: 7vh;
   width: 98%;
   padding: 1%;
   flex-grow: 1 !important;
   
+}
+.logueateRata{
+  color: black !important;
+ height: 7rem;
+ margin-top: 1rem;
+ background-color: red;
+ font-size: 20px ;
+ display: flex;
+ align-items: center;
+ flex-direction: column;
+
+}
+
+.logueateRata1{
+ color: white;
 }
 
 .FoooterSign{
@@ -158,46 +178,196 @@ height: calc((90% - 30px) / 2) !important;
  
  
 }
+.itineraryActivities{
+  display: flex !important;
+  flex-grow: 1 !important;
+  display: flex;
+  justify-content: center;
+}
+
+@media (width < 320px){
+  .itineraryActivities {
+    width: 100vw;
+    height: 60vh;
+  }}
+
 .contenedorComentarios{
-  background-color: rgba(0, 0, 0, 0.26);
-  width: 90%;
-  min-height: 20rem;
+  border: 2px solid rgb(0, 0, 0);
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: 30px !important;
+  box-shadow: 0px 12px 15px grey;
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   
 }
 
-.cajaComentario{
-  border: 2px solid black;
-  display: flex;
-  width: 99%;
-  height: 6rem;
-  display: flex;
-  gap:0.2rem;
+@media (width < 320px){
+  .contenedorComentarios {
+    width: 70%;
+    height: 60vh;
+  }}
 
+.cajaComentario{
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: nowrap;
+  width: 95%;
+  margin-top: 1rem;
+  background-color: rgba(255, 124, 1, 0.438);
+  padding: 2%;
+ 
 }
 
 .nombreComentario{
-  background-color: rgba(0, 0, 255, 0.514);
-  height: 2rem;
+  display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: .5rem;
+    margin-right: .5rem;
+    margin-left: .5rem;
+    width: 40%;
+    
 }
 
 
 .bodyComment{
-  background-color: rgba(255, 255, 255, 0.521);
-  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 1rem;
 }
 .fotoComentario{
-  border: 2px solid blue ;
-  width: 30%;
-  height: 5rem;
+  font-size: 15px;
+    text-align: left;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    margin-left: 1rem;
+}
+.card-text-textComments{
+   margin: 0rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    margin-top: 1rem;
+
 }
 
+.avatarComent{
+  border-radius: 50%;
+  width: 5rem;
+}
 .botonesComents{
-  width: 3rem;
+  padding: 0.2rem;
+    border-radius: 5px;
+    font-size: 13px;
+    background-color: #95aca8a5;
+    margin-right: 1rem !important;
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+    margin-left: 0!important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.botonEnviar{
+  padding: 0.5rem;
+    border-radius: 10px;
+    font-size:20px;
+    background-color: #e98007ef;
+  
+    display: flex;
+    gap: 1rem;
+    height: 3rem;
+    width: 5rem;
+    display: flex;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    margin: 1%;
+   
+   
+}
+.botonEdit{
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size:20px;
+  background-color: #e98007ef;
+  margin-right: 1rem !important;
+  margin-top: 1rem!important;
+  margin-bottom: 0!important;
+  margin-left: 0!important;
   display: flex;
   gap: 1rem;
+  height: 3rem;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0, 0, 0);
 }
+.botonDelete{
+  padding: 0.5rem;
+  border-radius: 10px;
+  font-size:20px;
+  background-color: #e98007ef;
+  margin-right: 1rem !important;
+  margin-top: 1rem!important;
+  margin-bottom: 0!important;
+  margin-left: 0!important;
+  display: flex;
+  gap: 1rem;
+  height: 3rem;
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+}
+#nuevoComentario{
+  
+  padding: 5%;
+  display: flex;
+  margin: 1rem;
+  justify-content: center;
+  background-color: #fff;
+}
+.ingresarComentario{
+  margin-top: 2rem;
+  background-color: rgba(0, 0, 255, 0.452);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.ingresarComentario h3{
+margin-top: 1rem;
+margin-left: 2%;
+}
+.cajitaComent{
+ width: 4rem;
+ height: 2rem;
+ display: flex;
+ align-items: center;
+}
+.tarjetaItinerario{
+  display: flex;
+  align-items: center;
+  
 
-
+}
+.css-6mpdo9-MuiPaper-root-MuiCard-root{
+  width: 400px !important;
+}
+.css-1487lx3{
+  display: flex;
+  flex-direction: column;
+}
  .caja{
    color:white;
    font-size: 1em;
@@ -300,10 +470,12 @@ height: calc((90% - 30px) / 2) !important;
 
 .CardItinerario{
   display: flex;
+  flex-direction: column;
   margin-top: 1rem;
   gap: 5rem;
   flex-wrap: wrap;
-
+align-items: center;
+flex-grow: 1;
 }
 .CardDetails{
   display: flex;
@@ -329,9 +501,7 @@ a{
 }
 
 /*COMENTARIOS*/
-.fotoComentario{
-  
-}
+
 
 
 
@@ -435,6 +605,38 @@ a{
     background-color: rgba(200, 255, 0, 0.493);
 } 
 
+.countryCard {
+  width: 50%;
+}
+
+.countryCardImage {
+width: 100%;
+height: auto;
+object-fit: cover;
+}
+
+.itinerario {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+#nuevoComentario {
+  border: 1px solid black;
+}
+
+.itineraryActivities {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.itineraryActivity {
+  object-fit: cover;
+  width: 30%;
+  aspect-ratio: 16 / 9;
+  border-radius: 1rem;
+}
 
 @media (width < 2100x){
   .FooterDetails {

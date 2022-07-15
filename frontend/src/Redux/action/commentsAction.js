@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Swal from "sweetalert2";
 
 const commentsActions = {
   addComment: (comments) => {
@@ -15,24 +16,33 @@ const commentsActions = {
             },
           }
         );
-        dispatch({ 
-          type: 'MESSAGE',
-          payload: {
-            view: true,
-            message: res.data.message,
-            success: res.data.success,
-          },
-        });
+
+    Swal.fire({
+      icon: "success",
+      title: res.data.message,
+    });
+        // dispatch({ 
+        //   type: 'MESSAGE',
+        //   payload: {
+        //     view: true,
+        //     message: res.data.message,
+        //     success: res.data.success,
+        //   },
+        // });
         return res;
       } else {
-        dispatch({
-          type: 'MESSAGE',
-          payload: {
-            view: true,
-            message: "Add comment",
-            success: false,
-          },
-        });
+    Swal.fire({
+      icon: "warning",
+      title: "Add comment",
+    });
+        // dispatch({
+        //   type: 'MESSAGE',
+        //   payload: {
+        //     view: true,
+        //     message: "Add comment",
+        //     success: false,
+        //   },
+        // });
       }
     };
   },
@@ -54,14 +64,18 @@ const commentsActions = {
       );
       
       console.log(res)
-      dispatch({
-        type: 'MESSAGE',
-        payload: {
-          view: true,
-          message: res.data.message,
-          success: res.data.success,
-        },
-      });
+    Swal.fire({
+      icon: "success",
+      title: res.data.message,
+    });
+      // dispatch({
+      //   type: 'MESSAGE',
+      //   payload: {
+      //     view: true,
+      //     message: res.data.message,
+      //     success: res.data.success,
+      //   },
+      // });
 
       return res;
     };
@@ -79,14 +93,18 @@ const commentsActions = {
           },
         }
       );
-      dispatch({
-        type: 'MESSAGE',
-        payload: {
-          view: true,
-          message: res.data.message,
-          success: res.data.success,
-        },
-      });
+    Swal.fire({
+      icon: "success",
+      title: res.data.message,
+    });
+      // dispatch({
+      //   type: 'MESSAGE',
+      //   payload: {
+      //     view: true,
+      //     message: res.data.message,
+      //     success: res.data.success,
+      //   },
+      // });
       return res;
     };
   },

@@ -26,8 +26,8 @@ function Body() {
                 justifyContent: 'center',
                 textalign: 'center',
                 alignItems: 'flexStart',
-                fontFamily: 'Abril Fatface',
-                marginTop:'-15rem'
+                fontFamily: 'Abril Fatface'
+               
 
             }}> My Tinerary</Typography>
 

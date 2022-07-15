@@ -15,14 +15,16 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import itineraryAction from '../Redux/action/itineraryAction';
-import {useParams} from "react-redux"
-import {useDispatch, useSelector} from 'react-redux'
-import {useState} from 'react'
-import Swal from "sweetalert2"; 
+import { useParams } from "react-redux"
+import { useDispatch, useSelector } from 'react-redux'
+import { useState } from 'react'
+import Swal from "sweetalert2";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
 import { ClassNames } from '@emotion/react';
 import Comments from './comments'
- 
+import Activities from './Activities'
+import Activity from './Activities';
+
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -34,9 +36,9 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function CardItinerario({data, handleReload, setChangeReload}) {
+export default function CardItinerario({ data, handleReload, setChangeReload }) {
   const [expanded, setExpanded] = React.useState(false);  //// setExpanded DISPATCH Despacha una o mas acciones al store
- console.log(data)
+  console.log(data)
   // const itineraryDetails=(props) =>{
   //   const {id} = useParams() 
   //   const [itinerary, setItinerary] = useState()
@@ -44,19 +46,19 @@ export default function CardItinerario({data, handleReload, setChangeReload}) {
   //   const [modify, setModify]  = useState()
   //   const [reload, setReload] = useState(false)
   // }
-const dispatch = useDispatch()
- const [reload, setReload] = React.useState(false)
+  const dispatch = useDispatch()
+  const [reload, setReload] = React.useState(false)
 
-const user = useSelector(store => store.userReducer.user) 
+  const user = useSelector(store => store.userReducer.user)
 
- 
-  const handleExpandClick = () => { 
-    setExpanded(!expanded); 
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
   };
- 
-  React.useEffect(()=>{
+
+  React.useEffect(() => {
     dispatch(itineraryAction.findTinFromCity(data.city._id));
-  }, [reload]); 
+  }, [reload]);
   // async function cargarComentario(event){
   //   const commentData = {
   //     itinerary: itinerary._id,
@@ -82,33 +84,35 @@ const user = useSelector(store => store.userReducer.user)
   //   setReload(!reaload)
   // }
 
-  async function likesOrDislikes(){
+  async function likesOrDislikes() {
     const res = await dispatch(itineraryAction.likeDislike(data._id))
     console.log(res)
     setReload(res)
     setChangeReload()
   }
 
-  async function noUser(){
+  async function noUser() {
     Swal.fire({
-      icon:"error",
-      title:"You must be logged in to comment or like an itinerary"
+      icon: "error",
+      title: "You must be logged in to comment or like an itinerary"
     })
   };
-  
+
   //  useEffect(()=>{
   //    props.getOneItinerary(id)
   //    .then(response => setItinerary(response.data.response.itinerary)) 
   // }, [reload])
 
- console.log(data)
+  console.log('==>', data, user)
   return (
-    <Card sx={{ width: 345 ,
-      boxShadow: "inset 0 0 10px rgba(255, 255, 255, 0.6), 0 0 9px 3px rgb(0, 0, 0)"}}>
+
+    <Card className="itinerario" sx={{
+      boxShadow: "inset 0 0 10px rgba(255, 255, 255, 0.6), 0 0 9px 3px rgb(0, 0, 0)"
+    }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            
+          <Avatar sx={{ bgcolor: red[500] }} src={data.avatar} aria-label="recipe">
+           
           </Avatar>
         }
         action={
@@ -119,40 +123,48 @@ const user = useSelector(store => store.userReducer.user)
         title={data.userName}
         subheader="September 14, 2016"
       />
-      <CardMedia
-        
-        component="img"
-        height="150"
-        image={data.avatar}
-        alt={data.name}
-      />
       <CardContent>
+        <div className="itineraryActivities">
+          {data.activities.map(activity => (
+            <img className="itineraryActivity" src={activity.image} alt={activity.name} />
+          
+          ))
+          
+          }
+          
+        </div>
+        <h4>{data.activities.name}</h4>
+        <h3>{data.name}</h3>
         <Typography variant="body2" color="text.secondary">
-         {data.description}
+          {data.description}
         </Typography>
+       
       </CardContent>
       <CardActions disableSpacing>
+        <div>
+          <Activities />
+          
+        </div>
 
-        
-      
-        
+
+
         {user ?
-                            <IconButton onClick={likesOrDislikes} aria-label="add to favorites">
-                            {data?.likes.includes(user.id) ?
-                                <FavoriteIcon style={{color:'red'}}/>
-                                :
-                                <FavoriteBorderIcon/>}
-                                <Typography>{data.likes.length} likes</Typography>
-                            </IconButton>
-                            : 
-                            <IconButton onClick={noUser} aria-label="add to favorites">
-                                <FavoriteBorderIcon/>
-                                <Typography>{data.likes.length} likes</Typography>
-                            </IconButton>
-                        }
-                        
+          <IconButton onClick={likesOrDislikes} aria-label="add to favorites">
+            {data?.likes.includes(user.user.id) ?
+              <FavoriteIcon style={{ color: 'red' }} />
+              :
+              <FavoriteBorderIcon />}
+            <Typography>{data.likes.length} likes</Typography>
+          </IconButton>
+          :
+          <IconButton onClick={noUser} aria-label="add to favorites">
+            <FavoriteBorderIcon />
+            <Typography>{data.likes.length} likes</Typography>
+          </IconButton>
+        }
+
         <IconButton aria-label="share">
-            <ShareIcon />
+          <ShareIcon />
         </IconButton>
         <ExpandMore
           expand={expanded}
@@ -167,19 +179,20 @@ const user = useSelector(store => store.userReducer.user)
         <CardContent>
           <Typography paragraph>{data.duration}</Typography>
           <Typography paragraph> $
-           {data.price}
+            {data.price}
           </Typography>
           <Typography paragraph>
-           {data.hashtag}
+            {data.hashtag}
 
           </Typography>
           <div className='contenedorComentarios'>
-          <Comments comentarios={data.comments}
-          handleReload={handleReload} 
-          itineraryId={data._id} />
-</div>
+            <Comments comentarios={data.comments}
+              handleReload={handleReload}
+              itineraryId={data._id}
+              currentUser={user} />
+          </div>
         </CardContent>
       </Collapse>
     </Card>
   );
-}
+} 

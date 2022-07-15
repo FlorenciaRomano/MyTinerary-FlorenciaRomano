@@ -24,9 +24,7 @@ app.set("port", PORT) //seteo la propiedad de app
 
 
 
-app.get("/", function(req, res){
-    res.send("Server created!")
-})
+app.get ('/', (req, res) => { res.send('SERVIDOR CREADO!') })
 
 app.listen(PORT, function(){
     console.log("Server is running on: " + app.get('port'))

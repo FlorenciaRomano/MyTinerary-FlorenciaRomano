@@ -13,6 +13,11 @@ import citiesActions from "../Redux/action/citiesAction";
 import { useSelector } from "react-redux";
 import CardItinerario from "../components/Itinerarys"
 import itineraryActions  from "../Redux/action/itineraryAction";
+import Activities from '../components/Activities'
+import Box from '@mui/material/Box'
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardMedia from '@mui/material/CardMedia';
 
 
 
@@ -119,13 +124,51 @@ console.log(city)
                 </LinkRouter>
                 </div>
 
+      <Box className="tajetaItinerario" sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            textAlign: 'center',
+            alignItems: 'center',
+            justifyContent: 'cnter'}}>  
+            <Card sx={{ maxWidth: "600px",width:"600px",height: "400px",margin:"10px" }} className="card-detail">
+    <CardMedia
+          component="img"
+          height="200"
+          image={city.image}
+          alt="img"
+        />
+        
+        <CardContent >
+          <Typography gutterBottom variant="h5" component="div" fontFamily="Rajdhani,sans-serif" fontSize="25px" font-weight-bold fontWeight="600">
+          {city.country}
+          </Typography>
+          <Typography variant="body2" color="text.secondary" fontFamily="Rajdhani,sans-serif" fontSize="20px" font-weight-bold fontWeight="600">
+          {city.city}
+          </Typography>
+          <Typography variant="body1" color="text.secondary" fontFamily="Rajdhani,sans-serif" font-weight-bold fontWeight="500">
+          {city.description}
+          </Typography>
+        </CardContent>
+        <CardActions>          
+        </CardActions>
+      </Card>   
+{/* <div className="countryCard">
+  <img className="countryCardImage" src={city.image} />
+  <h1>{city.country}</h1>
+  <p>{city.city}</p>
+</div> */}
+
+</Box>
+
       <div className="CardItinerario">
+
+
       {itinerary.length > 0 ? itinerary.map((data)=>
-        <CardItinerario data = {data} handleReload={handleReload} 
+        <CardItinerario key={data._id} data = {data} handleReload={handleReload} 
         setChangeReload={reloadChanger} />
       ): <>
       
-      <img src="https://vmanagecrm.in/property/img/404-error.jpg" />
+      <h1>DOES NOT CONTAIN ITINERARIES</h1>
       </>}
      
         </div> 
